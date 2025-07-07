@@ -1,0 +1,221 @@
+/* Custom CSS for Shree Krishna Website */
+
+
+/* General Body Styling (overrides Tailwind if necessary for specific fonts/colors) */
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Tailwind's bg-gray-50 already provides a light background */
+}
+
+
+/* Custom animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceSlow {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-bounce-slow {
+    animation: bounceSlow 2s infinite ease-in-out;
+}
+
+
+/* Hide sections initially for JS animation */
+
+.section-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+
+/* Hero Section Specifics */
+
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    /* Ensure it takes a good portion of the viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    /* Ensure text is visible on background image */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Dark overlay for better text readability */
+    z-index: 0;
+}
+
+.hero-section>* {
+    z-index: 1;
+    /* Ensure content is above the overlay */
+}
+
+
+/* Product Card specific styling (Tailwind handles most, but some custom tweaks) */
+
+.product-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.like-button .far.fa-heart {
+    color: inherit;
+    /* Use the parent's text color by default */
+}
+
+.like-button.liked .fas.fa-heart {
+    color: #ef4444;
+    /* Red color when liked */
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* Modal Overlay */
+
+.modal-overlay {
+    backdrop-filter: blur(5px);
+    /* Optional: adds a blur effect to the background */
+    -webkit-backdrop-filter: blur(5px);
+    /* For Safari */
+}
+
+
+/* Modal Close Button */
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+
+/* Chat Box Styling */
+
+#chatBox {
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Mobile Menu Button - Ensure visibility */
+
+#mobileMenuBtn {
+    display: block;
+    /* Force display on smaller screens */
+    z-index: 60;
+    /* Ensure it's above other content */
+}
+
+
+/* Hide desktop nav links on mobile */
+
+@media (max-width: 767px) {
+    .hidden.md\:flex {
+        display: none;
+    }
+}
+
+
+/* Show mobile menu when active */
+
+#mobileMenu.active {
+    display: block;
+}
+
+
+/* Style for chat icon bounce */
+
+#chatIcon {
+    animation: bounceSlow 2s infinite ease-in-out;
+}
